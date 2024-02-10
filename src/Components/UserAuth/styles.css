@@ -1,0 +1,27 @@
+.signup{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-inline: auto;
+    align-items: center;
+    height: calc(100vh - 6rem);
+    justify-content: center;
+    gap: 2rem;
+}
+.signup input{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: white;
+    word-spacing: 20px;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    width: 60%;
+}
+.signup p {
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 18px;
+}
