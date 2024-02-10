@@ -24,9 +24,9 @@
     border-radius: 24px;
     padding: 0.5rem 1rem;
     text-align: left;
-    
+    word-spacing: normal;
     display: inline;
-    width: 40%;
+    width: 50%;
 }
 .username{
     border: 1px solid var(--yellow)!important;
@@ -53,7 +53,8 @@
     align-items: center;
     justify-content: space-between;
     padding-right: 1rem;
-    width: 42%;
+    width: 52%;
+    word-spacing: normal;
 }
 .showPassword{
     color: rgb(170, 170, 169);
@@ -61,4 +62,36 @@
 }
 .password input{
     width: 100%;
+}
+
+
+@media only screen and (max-width:860px){
+    input::placeholder{
+    font-weight: 600;
+    font-size: 20px;
+    word-spacing: normal;
+}
+}
+
+@media only screen and (max-width:698px){
+    input::placeholder{
+    font-weight: 500;
+    font-size: 16px;
+    word-spacing: normal;
+}
+input{
+    width: 70%!important;
+    min-width: none;
+}
+.password{
+    width: 74%;
+}
+}
+
+@media only screen and (max-width:525px){
+ .signup p{
+    font-size: 14px;
+    text-align: center;
+    padding: 14px;
+ }
 }

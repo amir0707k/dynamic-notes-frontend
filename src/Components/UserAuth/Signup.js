@@ -176,8 +176,9 @@ function AuthenticateUser({ newAccount, setNewAccount, fetchNotes }) {
             <p
               onClick={() => {
                 setNewAccount(true);
-                setShowPassword(false)
+                setShowPassword(false);
               }}
+              className="alert"
             >
               Don't have an account ? Click here to Signup
             </p>
