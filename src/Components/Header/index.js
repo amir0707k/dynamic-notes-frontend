@@ -5,10 +5,10 @@ import "./styles.css";
 import { Tooltip } from "@mui/material";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
-import { updateSearchQuery } from "../../features/noteSlice";
+import { setIsSignedIn, updateSearchQuery } from "../../features/noteSlice";
 
 
-function Header({ isSignedIn, setIsSignedIn, newAccount }) {
+function Header({ isSignedIn, newAccount }) {
   const [isClicked, setIsClicked] = useState(false);
   
   const dispatch = useDispatch();
@@ -36,7 +36,7 @@ const ref = useRef(null);
       console.log("clicked");
       localStorage.removeItem("token");
 
-      setIsSignedIn(false);
+      dispatch(setIsSignedIn(false));
     };
   console.log(isSignedIn);
   return (
