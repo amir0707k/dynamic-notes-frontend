@@ -71,7 +71,8 @@ function AuthenticateUser({ newAccount, setNewAccount, fetchNotes }) {
             },
           }
         );
-        console.log("Executing fetchnotes");
+        
+        console.log("Executing fetchnotes", signIn);
         fetchNotes();
       } else {
         const signIn = await axios.post(
@@ -92,6 +93,11 @@ function AuthenticateUser({ newAccount, setNewAccount, fetchNotes }) {
         dispatch(setIsloading(false));
       }
     } catch (e) {
+      if (e.response.status === 403) {
+        alert("Invalid username or password");
+        dispatch(setIsloading(false));
+        return;
+      }
       console.log(e);
     }
   };
