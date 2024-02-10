@@ -1,12 +1,16 @@
 .signup{
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 80%;
     margin-inline: auto;
+    margin-top: 0.5rem;
     align-items: center;
     height: calc(100vh - 6rem);
     justify-content: center;
     gap: 2rem;
+    border: 1px solid var(--yellow);
+    border-radius: 24px;
+    padding: 2px!important;
 }
 .signup input{
     background-color: transparent;
@@ -17,13 +21,22 @@
     font-size: 24px;
     font-weight: 700;
     text-align: center;
-    width: 60%;
+    border-radius: 24px;
+    padding: 0.5rem 1rem;
+    text-align: left;
+    
+    display: inline;
+    width: 40%;
+}
+.username{
+    border: 1px solid var(--yellow)!important;
 }
 .signup p {
-    color: white;
+    color: var(--yellow);
     cursor: pointer;
     font-weight: 600;
     font-size: 18px;
+    display: inline;
 }
 
 .loader{
@@ -32,4 +45,20 @@
     height: 100vh;
     justify-content: center;
     align-items: center;
+}
+.password{
+    display: flex;
+    border: 1px solid var(--yellow);
+    border-radius: 24px;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 1rem;
+    width: 42%;
+}
+.showPassword{
+    color: rgb(170, 170, 169);
+    cursor: pointer;
+}
+.password input{
+    width: 100%;
 }
