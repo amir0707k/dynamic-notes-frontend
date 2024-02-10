@@ -12,7 +12,6 @@ export const handleDelete = async (note, dispatch) => {
         },
       }
     );
-    deleteNote.then((res) => console.log(res));
     dispatch(
       removeNote({
         id: note.id,

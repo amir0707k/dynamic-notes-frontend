@@ -7,7 +7,8 @@ const initialState = {
   notes:  [] ,
   searchQuery: "",
   token:"",
-  isSignedIn:token ? true : false
+  isSignedIn:token ? true : false,
+  isLoading:false
 };
 
 export const noteSlice = createSlice({
@@ -49,6 +50,9 @@ export const noteSlice = createSlice({
     setIsSignedIn: (state, action) => {
       console.log(action.payload)
       state.isSignedIn = action.payload
+    }, 
+    setIsloading:(state,action) => {
+      state.isLoading = action.payload
     }
   },
 });
@@ -62,6 +66,7 @@ export const {
   updateSearchQuery,
   updateNotes,
   setIsSignedIn,
+  setIsloading,
 } = noteSlice.actions;
 
 export default noteSlice.reducer;

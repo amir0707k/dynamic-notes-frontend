@@ -13,6 +13,9 @@ function ListComponent() {
     handleSearch(filteredNotes, notes, searchQuery, setFilteredNotes);
   }, [searchQuery,notes]);
 
+  useEffect(() => {
+    
+  }, [notes])
   return (
     <div className="mainpage-grid">
       {filteredNotes.map((note) => {

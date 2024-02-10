@@ -2,8 +2,9 @@ import axios from "axios";
 import React, { useState } from "react";
 import "./styles.css";
 import Button from "../Button";
-import { useDispatch } from "react-redux";
-import { setIsSignedIn } from "../../features/noteSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsSignedIn, setIsloading } from "../../features/noteSlice";
+import Loader from "../Loader/Loader";
 
 function AuthenticateUser({
   newAccount,
@@ -12,12 +13,18 @@ function AuthenticateUser({
 }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const isLoading = useSelector(state => state.isLoading)
   const dispatch = useDispatch();
 
   const createAccount = async (e) => {
     e.preventDefault();
     try{
+       if (!username && !password) {
+         alert("Enter valid username/password");
+         dispatch(setIsloading(false));
+         return;
+       }
+      dispatch(setIsloading(true))
       const newUser = await axios.post(
         "https://dynamic-notes.onrender.com/signup",
         {
@@ -32,6 +39,7 @@ function AuthenticateUser({
     setUsername("");
     setPassword("");
     dispatch(setIsSignedIn(true));
+    dispatch(setIsloading(false)); 
     }
     catch(e){
        console.log(e);
@@ -43,9 +51,16 @@ function AuthenticateUser({
   };
 
   const login = async (e) => {
+
     e.preventDefault();
     const token = localStorage.getItem("token");
     try {
+        dispatch(setIsloading(true))
+        if(!username && !password ){
+          alert("Enter valid username/password")
+          dispatch(setIsloading(false));
+          return
+        }
       if (token) {
         const signIn = await axios.post(
           "https://dynamic-notes.onrender.com/login",
@@ -57,6 +72,7 @@ function AuthenticateUser({
         );
         console.log("Executing fetchnotes");
         fetchNotes();
+
       } else {
         const signIn = await axios.post(
           "https://dynamic-notes.onrender.com/login",
@@ -74,6 +90,8 @@ function AuthenticateUser({
         setPassword("");
         dispatch(setIsSignedIn(true));
         fetchNotes();
+        dispatch(setIsloading(false))
+
       }
     } catch (e) {
       console.log(e);
@@ -81,7 +99,7 @@ function AuthenticateUser({
   };
   return (
     <>
-      {newAccount ? (
+      { isLoading ? ( <Loader className="loader"/> ) : newAccount ? (
         <form onSubmit={createAccount}>
           <div className="signup">
             <input

@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsSignedIn, updateNotes } from "./features/noteSlice";
 import AuthenticateUser from "./Components/UserAuth/Signup";
+
 // import { fetchNotes, updateNote, updateNotes } from './features/noteSlice';
 
 
@@ -59,17 +60,15 @@ function App() {
     <>
       {isSignedIn ? (
         <div className="App">
-          <Header
-            isSignedIn={isSignedIn}
-            newAccount={newAccount}
-          />
+          
+          <Header isSignedIn={isSignedIn} newAccount={newAccount} />
           <InputComponent isSignedIn={isSignedIn} />
           <ListComponent />
           <BackToTop />
         </div>
       ) : (
         <>
-          <Header isSignedIn={isSignedIn}  />
+          <Header isSignedIn={isSignedIn} />
           <AuthenticateUser
             newAccount={newAccount}
             setNewAccount={setNewAccount}

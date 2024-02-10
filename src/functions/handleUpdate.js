@@ -32,7 +32,7 @@ export const handleUpdate = async (
         },
       }
     );
-    editNote.then((res) => console.log(res));
+  
   } catch (e) {
     console.log(e);
     if (e.response.status === 403) {
